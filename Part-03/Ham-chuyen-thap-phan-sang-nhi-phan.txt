@@ -1,0 +1,22 @@
+﻿/*
+Hàm chuyển từ số thập phân về nhị phân*/
+string ChuyenVeSoNhiPhan(int so)
+{
+string strKetQua = "";
+int sodu = 0;
+while(so > 0)
+{
+sodu = so%2;
+so = so / 2;
+ostringstream convert;
+convert <<sodu;
+strKetQua += convert.str();
+}
+//Duyệt ngược các phần tử
+string strSoNhiPhan = "";
+for(int i = (int)strKetQua.length() - 1; i >= 0; i--)
+{
+strSoNhiPhan += strKetQua.substr(i, 1);
+}
+return strSoNhiPhan;
+};

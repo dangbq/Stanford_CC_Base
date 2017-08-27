@@ -1,0 +1,93 @@
+﻿* Bài 10: Chuyển từ số về dạng chữ
+/*
+Hàm chuyển từng số về dạng chuỗi tương ứng */
+string ChuyenSoVeChuoi(int so)
+{
+string strKetQua = "";
+switch(so)
+{
+case 0: strKetQua = "không";
+break;
+case 1: strKetQua = "một";
+break;
+case 2: strKetQua = "hai";
+break;
+case 3: strKetQua = "ba";
+break;
+case 4: strKetQua = "bốn";
+break;
+case 5: strKetQua = "năm";
+break;
+case 6: strKetQua = "sáu";
+break;
+case 7: strKetQua = "bẩy";
+break;
+case 8: strKetQua = "tám";
+break;
+case 9: strKetQua = "chín";
+break;
+}
+return strKetQua;
+};
+/*
+Hàm chuyển số gồm 3 chữ số về dạng chuỗi tương ứng*/
+string Chuyen3So(int so)
+{
+string strKetQua = "";
+ostringstream convert;
+convert<<so;
+//Lấy số lượng số
+int length = (int)convert.str().length();
+int hangchuc = 0;
+switch(length)
+{
+case 3:
+hangchuc = so % 100;
+strKetQua = ChuyenSoVeChuoi(so/100) + " trăm " + ChuyenSoVeChuoi(hangchuc/10) + " " + ChuyenSoVeChuoi(hangchuc%10);
+break;
+case 2:
+strKetQua = ChuyenSoVeChuoi(so / 10) + " " + ChuyenSoVeChuoi(so % 10);
+break;
+case 1:
+strKetQua = ChuyenSoVeChuoi(so);
+break;
+default:break;
+}
+return strKetQua;
+}
+string DocSoDangChu(int so)
+{
+string strKetQua = "";
+int length = 0;
+ostringstream convert;
+convert <<so;
+length = (int)convert.str().length();
+if(length>=6)
+{
+int hangtrieu = so/1000000;
+int temp = so%1000000;
+int hangnghin = temp / 1000;
+int hangtram = temp%1000;
+strKetQua = Chuyen3So(hangtrieu) + " triệu " + Chuyen3So(hangnghin) + " nghìn " + Chuyen3So(hangtram) + " đồng";
+}
+else
+{
+if(length < 6 && length > 3)
+{
+int hangnghin = so/1000;
+int hangtram = so % 1000;
+strKetQua = Chuyen3So(hangnghin) + " nghìn " + Chuyen3So(hangtram) + " đồng";
+}
+else
+{
+strKetQua = Chuyen3So(so) + " đồng";
+}
+}
+return strKetQua;
+}
+int main(int argc, const char * argv[]) {
+// insert code here...
+//std::cout << "Hello, World!\n";
+cout <<"Số 3 chữ số: "<<DocSoDangChu(35258)<<endl;
+return 0;
+}
