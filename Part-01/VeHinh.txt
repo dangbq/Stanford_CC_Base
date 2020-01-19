@@ -1,0 +1,64 @@
+//Câu 3a là:
+	cout <<"Hinh 3a la: "<<endl;
+
+	for(int i=0; i<8; i++)
+	{
+		for(int j = 0; j<=i; j++)
+		{
+			cout <<"#";
+		}
+
+		//Xuống dòng
+		cout <<endl;
+	}
+
+	//Câu 3b là:
+	cout <<endl;
+	cout <<"Hinh 3b la: "<<endl;
+
+	int j = 0;
+
+	for(int i=0; i<8; i++)
+	{
+		j = 0;
+
+		while(j<8-i)
+		{
+			cout <<"#";
+			j++;
+		}
+
+		cout <<endl;
+	}
+
+	cout <<"Hinh 3d:"<<endl;
+
+	int i = 0;
+	j = 0;
+
+	while(i<8)
+	{
+		//Thiết lập lại giá trị cho j = 0
+		j = 0;
+
+		do
+		{
+			//In ra khoảng trắng
+			if(j<8-i-1)
+			{
+				cout <<" ";
+			}
+			else
+			{
+				cout <<"#";
+			}
+
+			j++;
+		}
+		while(j<8);
+
+		//Xuống dòng
+		cout <<endl;
+
+		i++;
+	}
